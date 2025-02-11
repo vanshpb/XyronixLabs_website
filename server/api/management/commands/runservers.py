@@ -15,7 +15,7 @@ class Command(BaseCommand):
         def restart_process(command, cwd, process_name):
             try:
                 self.stdout.write(self.style.WARNING(f'Restarting {process_name}...'))
-                process = subprocess.Popen(command, cwd=cwd)
+                process = subprocess.Popen(command, cwd=cwd, shell=True)
                 self.stdout.write(self.style.SUCCESS(f'{process_name} restarted.'))
                 return process
             except Exception as e:
@@ -47,21 +47,21 @@ class Command(BaseCommand):
             client_path = Path(__file__).resolve().parent.parent.parent.parent.parent / 'client'
             self.stdout.write(self.style.SUCCESS(f'Client path: {client_path}'))
 
-            # Define the path to the Server directory
+            # Define the path to the server directory
             server_path = Path(__file__).resolve().parent.parent.parent.parent.parent / 'server'
             self.stdout.write(self.style.SUCCESS(f'Server path: {server_path}'))
 
             # Define the path to the yarn executable
             yarn_path = 'C:\\Users\\adity\\AppData\\Roaming\\npm\\yarn.cmd'  # Update this path to the actual location of yarn.cmd on your system
 
-            # Start the React development server
+            # Start the React development server using Vite
             self.stdout.write(self.style.SUCCESS('Starting React development server...'))
-            react_process = subprocess.Popen([yarn_path, 'start'], cwd=client_path)
+            react_process = subprocess.Popen([yarn_path, 'vite', '--host'], cwd=client_path, shell=True)
             self.stdout.write(self.style.SUCCESS('React development server started.'))
 
             # Start the Django development server
             self.stdout.write(self.style.SUCCESS('Starting Django development server...'))
-            django_process = subprocess.Popen(['python', 'manage.py', 'runserver_plus', '--cert-file', 'cert.pem', '--key-file', 'key.pem'], cwd=server_path)
+            django_process = subprocess.Popen(['python', 'manage.py', 'runserver_plus', '--cert-file', 'cert.crt', '--key-file', 'cert.key'], cwd=server_path)
             self.stdout.write(self.style.SUCCESS('Django development server started.'))
 
             # Wait for both processes to complete
@@ -71,11 +71,11 @@ class Command(BaseCommand):
 
                 if react_return_code is not None:
                     self.stderr.write(self.style.ERROR('React development server failed.'))
-                    react_process = restart_process([yarn_path, 'start'], client_path, 'React development server')
+                    react_process = restart_process([yarn_path, 'vite', '--host'], client_path, 'React development server')
 
                 if django_return_code is not None:
                     self.stderr.write(self.style.ERROR('Django development server failed.'))
-                    django_process = restart_process(['python', 'manage.py', 'runserver_plus', '--cert-file', 'cert.pem', '--key-file', 'key.pem'], server_path, 'Django development server')
+                    django_process = restart_process(['python', 'manage.py', 'runserver_plus', '--cert-file', 'cert.crt', '--key-file', 'cert.key'], server_path, 'Django development server')
 
                 if react_return_code is None and django_return_code is None:
                     react_process.wait()

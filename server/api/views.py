@@ -1,6 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import SampleSerializer
+from server.mongodb import get_db
 
 @api_view(['GET'])
 def sample_api(request):
@@ -12,7 +13,14 @@ def sample_api(request):
 
 @api_view(['GET'])
 def home(request):
-    return Response({"message": "Welcome to the Home page"})
+    db = get_db()
+    collection = db['home_collection']
+    data = collection.find_one({}, {'_id': 0})  # Exclude the '_id' field from the response
+    return Response(data)
+
+#@api_view(['GET'])
+#def home(request):
+#    return Response({"message": "Welcome to the Home page"})
 
 @api_view(['GET'])
 def about_us(request):

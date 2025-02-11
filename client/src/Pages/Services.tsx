@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Gallery = () => {
+const Services = () => {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    axios.get('/api/gallery/')
+    axios.get('/services/')
       .then(response => {
         setMessage(response.data.message);
       })
@@ -16,10 +16,10 @@ const Gallery = () => {
 
   return (
     <div>
-      <h1>Gallery</h1>
+      <h1>Services</h1>
       <p>{message}</p>
     </div>
   );
 };
 
-export default Gallery;
+export default Services;

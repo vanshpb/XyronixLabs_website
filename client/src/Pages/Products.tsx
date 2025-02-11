@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Services = () => {
+const Products = () => {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    axios.get('/api/services/')
+    axios.get('/products/')
       .then(response => {
         setMessage(response.data.message);
       })
@@ -16,10 +16,10 @@ const Services = () => {
 
   return (
     <div>
-      <h1>Services</h1>
+      <h1>Products</h1>
       <p>{message}</p>
     </div>
   );
 };
 
-export default Services;
+export default Products;

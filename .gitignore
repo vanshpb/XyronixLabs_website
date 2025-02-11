@@ -1,0 +1,11 @@
+# Node modules
+node_modules/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment directories
+venv/
+env/

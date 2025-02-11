@@ -14,16 +14,17 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-uacn14jce0fb!qg+^v!
 DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 
 # Redirect HTTP to HTTPS
-SECURE_SSL_REDIRECT = not DEBUG
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Ensure cookies are only sent over HTTPS
-SESSION_COOKIE_SECURE = not DEBUG
-CSRF_COOKIE_SECURE = not DEBUG
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 ALLOWED_HOSTS = ['xyronixlabs.com', 'www.xyronixlabs.com', 'localhost', '127.0.0.1']
 CSRF_TRUSTED_ORIGINS = [
-    'https://xyronixlabs.com',
-    'https://www.xyronixlabs.com',
+    #'https://xyronixlabs.com',
+    #'https://www.xyronixlabs.com',
     'https://localhost',
     'https://localhost:3000',
     'https://192.168.1.7:3000'
@@ -78,8 +79,8 @@ WSGI_APPLICATION = 'server.wsgi.application'
 CORS_ALLOWED_ORIGINS = [
     "https://localhost:3000",
     "https://192.168.1.7:3000",
-    "https://xyronixlabs.com",
-    "https://www.xyronixlabs.com"
+    #"https://xyronixlabs.com",
+    #"https://www.xyronixlabs.com"
 ]
 
 # Database

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Products = () => {
-  const [message, setMessage] = useState('');
+const Home: React.FC = () => {
+  const [message, setMessage] = useState<string>('');
 
   useEffect(() => {
-    axios.get('/api/products/')
+    axios.get('/home/')
       .then(response => {
         setMessage(response.data.message);
       })
@@ -16,10 +16,10 @@ const Products = () => {
 
   return (
     <div>
-      <h1>Products</h1>
+      <h1>Home</h1>
       <p>{message}</p>
     </div>
   );
 };
 
-export default Products;
+export default Home;

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Home = () => {
+const AboutUs = () => {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    axios.get('/api/home/')
+    axios.get('/about-us/')
       .then(response => {
         setMessage(response.data.message);
       })
@@ -16,10 +16,10 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Home</h1>
+      <h1>AboutUs</h1>
       <p>{message}</p>
     </div>
   );
 };
 
-export default Home;
+export default AboutUs;
