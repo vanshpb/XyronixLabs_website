@@ -141,6 +141,54 @@ const jobs = [
       }
     ]
   },
+  {
+    id: 4,
+    title: "researcher intern",
+    department: "R&D ",
+    location: "Remote",
+    type: "Contract",
+    experience: "0-1 years",
+    salary: "Unpaid",
+    description: "Join our team as a Research Intern and help us explore new ideas, technologies, and strategies to support our product and engineering decisions. You'll assist in gathering data, analyzing trends, and producing research reports that help shape the future of our platform.",
+    requirements: [
+      "Consulting Projects",
+      "Secondary Research",
+
+      "Analysis Market",
+
+      "Primary Research",
+
+      "Data Analysis",
+
+      "Research Analyst",
+
+      "Market Research"
+    ],
+    benefits: [
+      "Competitive contract rates",
+      "Flexible hours",
+      "Remote work",
+      "Learning opportunities",
+      "Project completion bonuses"
+    ],
+    postedDate: "2024-06-20",
+    company: "Xyronix Labs",
+    contactEmail: "hiring@xyronixlabs.com",
+    hiringTeam: [
+      {
+        name: "Aditya Seth",
+        role: "Founder & CEO",
+      },
+      {
+        name: "Hemaang Mehra",
+        role: "Co-Founder & COO",
+      },
+      {
+        name: "Ishita Jaiswal",
+        role: "Technical Recruiter",
+      }
+    ]
+  }
 ];
 
 export default function JobsPage() {
@@ -150,11 +198,19 @@ export default function JobsPage() {
   const [selectedJob, setSelectedJob] = useState<typeof jobs[0] | null>(null);
   const [isApplyDialogOpen, setIsApplyDialogOpen] = useState(false);
 
+  const normalize = (str: string) => str.trim().toLowerCase();
+
   const filteredJobs = jobs.filter((job) => {
     const matchesSearch = job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       job.description.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesDepartment = !selectedDepartment || selectedDepartment === "all-departments" || job.department === selectedDepartment;
-    const matchesType = !selectedType || selectedType === "all-types" || job.type === selectedType;
+    const matchesDepartment =
+      !selectedDepartment ||
+      selectedDepartment === "all-departments" ||
+      normalize(job.department) === normalize(selectedDepartment);
+    const matchesType =
+      !selectedType ||
+      selectedType === "all-types" ||
+      job.type === selectedType;
     return matchesSearch && matchesDepartment && matchesType;
   });
 
@@ -192,6 +248,7 @@ export default function JobsPage() {
                 <SelectItem value="Engineering">Engineering</SelectItem>
                 <SelectItem value="Design">Design</SelectItem>
                 <SelectItem value="Operations">Operations</SelectItem>
+                <SelectItem value="R&D">R&D</SelectItem>
               </SelectContent>
             </Select>
             <Select value={selectedType} onValueChange={setSelectedType}>
@@ -211,7 +268,7 @@ export default function JobsPage() {
         {/* Job Listings */}
         <div className="grid gap-6">
           {filteredJobs.map((job) => (
-            <Card key={job.id} className="p-6 hover:shadow-xl transition-all duration-300 border-l-4 border-l-primary/50">
+            <Card key={job.id} className="relative p-6 pl-[1.25rem] hover:pl-6 hover:shadow-xl transition-all duration-300 before:content-[''] before:absolute before:top-0 before:left-0 before:h-full before:border-l-2 before:border-primary/50 hover:before:border-l-[4px]">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
@@ -282,7 +339,7 @@ export default function JobsPage() {
                     {selectedJob.salary}
                   </Badge>
                 </div>
-                
+
                 {/* Contact Information */}
                 <div className="bg-muted/50 rounded-lg p-4 space-y-3">
                   <div className="flex items-center gap-2 text-primary">
@@ -346,78 +403,78 @@ export default function JobsPage() {
           {selectedJob && (
             <DialogContent className="w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl mx-auto mt-16 mb-16 flex items-center justify-center">
               <div className="w-full h-[85vh] max-h-[85vh] overflow-y-auto bg-background text-foreground p-6 pb-10 rounded-lg shadow-lg">
-              <DialogHeader>
-                <DialogTitle>Apply for {selectedJob.title}</DialogTitle>
-                <DialogDescription>
-                  Please fill out the application form below. All fields are required.
-                </DialogDescription>
-              </DialogHeader>
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <DialogHeader>
+                  <DialogTitle>Apply for {selectedJob.title}</DialogTitle>
+                  <DialogDescription>
+                    Please fill out the application form below. All fields are required.
+                  </DialogDescription>
+                </DialogHeader>
+                <form className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="firstName">First Name</Label>
+                      <Input id="firstName" placeholder="John" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="lastName">Last Name</Label>
+                      <Input id="lastName" placeholder="Doe" />
+                    </div>
+                  </div>
+
                   <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" placeholder="John" />
+                    <Label htmlFor="email">Email</Label>
+                    <Input id="email" type="email" placeholder="you@example.com" />
                   </div>
+
                   <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" placeholder="Doe" />
+                    <Label htmlFor="phone">Phone Number</Label>
+                    <Input id="phone" type="tel" placeholder="+1 (555) 000-0000" />
                   </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="you@example.com" />
-                </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" type="tel" placeholder="+1 (555) 000-0000" />
-                </div>
+                  <div className="space-y-2">
+                    <Label>Resume</Label>
+                    <div className="border-2 border-dashed rounded-lg p-6 text-center">
+                      <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
+                      <p className="text-sm text-muted-foreground mb-1">
+                        Drag and drop your resume here, or click to browse
+                      </p>
+                      <Input id="resume" type="file" className="hidden" />
+                      <Button variant="secondary" size="sm" onClick={() => document.getElementById('resume')?.click()}>
+                        Browse Files
+                      </Button>
+                    </div>
+                  </div>
 
-                <div className="space-y-2">
-                  <Label>Resume</Label>
-                  <div className="border-2 border-dashed rounded-lg p-6 text-center">
-                    <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                    <p className="text-sm text-muted-foreground mb-1">
-                      Drag and drop your resume here, or click to browse
-                    </p>
-                    <Input id="resume" type="file" className="hidden" />
-                    <Button variant="secondary" size="sm" onClick={() => document.getElementById('resume')?.click()}>
-                      Browse Files
+                  <div className="space-y-2">
+                    <Label>Portfolio (Optional)</Label>
+                    <div className="border-2 border-dashed rounded-lg p-6 text-center">
+                      <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
+                      <p className="text-sm text-muted-foreground mb-1">
+                        Share your work samples or portfolio
+                      </p>
+                      <Input id="portfolio" type="file" className="hidden" multiple />
+                      <Button variant="secondary" size="sm" onClick={() => document.getElementById('portfolio')?.click()}>
+                        Browse Files
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="coverLetter">Cover Letter</Label>
+                    <Textarea
+                      id="coverLetter"
+                      placeholder="Tell us why you're interested in this position and what makes you a great fit..."
+                      className="min-h-[150px]"
+                    />
+                  </div>
+
+                  <DialogFooter>
+                    <Button variant="outline" onClick={() => setIsApplyDialogOpen(false)}>
+                      Cancel
                     </Button>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label>Portfolio (Optional)</Label>
-                  <div className="border-2 border-dashed rounded-lg p-6 text-center">
-                    <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                    <p className="text-sm text-muted-foreground mb-1">
-                      Share your work samples or portfolio
-                    </p>
-                    <Input id="portfolio" type="file" className="hidden" multiple />
-                    <Button variant="secondary" size="sm" onClick={() => document.getElementById('portfolio')?.click()}>
-                      Browse Files
-                    </Button>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="coverLetter">Cover Letter</Label>
-                  <Textarea
-                    id="coverLetter"
-                    placeholder="Tell us why you're interested in this position and what makes you a great fit..."
-                    className="min-h-[150px]"
-                  />
-                </div>
-
-                <DialogFooter>
-                  <Button variant="outline" onClick={() => setIsApplyDialogOpen(false)}>
-                    Cancel
-                  </Button>
-                  <Button type="submit">Submit Application</Button>
-                </DialogFooter>
-              </form>
+                    <Button type="submit">Submit Application</Button>
+                  </DialogFooter>
+                </form>
               </div>
             </DialogContent>
           )}
