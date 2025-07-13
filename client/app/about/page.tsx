@@ -859,211 +859,362 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* Founders Section */}
-      <section
-        id="founders"
-        ref={sectionRefs.founders}
-        className={`py-20 ${darkMode ? "bg-gray-950" : "bg-gray-50"
-          } transition-colors duration-300 relative overflow-hidden p-16 mb-6`}
+{/* Founders Section */}
+<section
+  id="founders"
+  ref={sectionRefs.founders}
+  className={`w-full py-20 ${
+    darkMode ? "bg-gray-950" : "bg-gray-50"
+  } transition-colors duration-300 relative overflow-hidden mb-6`}
+>
+  <div className="absolute inset-0 opacity-10">
+    <WaveAnimation darkMode={darkMode} />
+  </div>
+
+  {/* Glass background overlay */}
+  <div className="absolute inset-0 z-0 bg-white/20 dark:bg-gray-900/30 backdrop-blur-lg border border-white/30 dark:border-gray-700/40 mx-4 md:mx-12 rounded-3xl" />
+
+  <div className="relative z-10 px-6 md:px-12 max-w-6xl mx-auto">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Founders</h2>
+      <p
+        className={`text-xl ${
+          darkMode ? "text-gray-300" : "text-gray-700"
+        } max-w-3xl mx-auto`}
       >
-        <div className="absolute inset-0 opacity-10">
-          <WaveAnimation darkMode={darkMode} />
-        </div>
+        The visionaries who established Xyronix Labs and continue to lead
+        our innovation.
+      </p>
+      <div
+        className={`h-1 w-20 ${
+          darkMode ? "bg-purple-500" : "bg-purple-600"
+        } mx-auto mt-6`}
+      ></div>
+    </motion.div>
 
-        {/* Glass background overlay */}
-        <div className="absolute inset-0 z-0 bg-white/20 dark:bg-gray-900/30 backdrop-blur-lg rounded-3xl border border-white/30 dark:border-gray-700/40 mx-4 md:mx-12" />
-
-        <div className="container mx-auto px-12 relative z-10 text-justify">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our Founders
-            </h2>
-            <p
-              className={`text-xl ${darkMode ? "text-gray-300" : "text-gray-700"
-                } max-w-3xl mx-auto`}
+    {/* Row-by-row cards */}
+    <div className="space-y-10">
+      {founders.map((founder, index) => (
+        <motion.div
+          key={founder.id}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: index * 0.2 }}
+          viewport={{ once: true }}
+          className={`w-full p-6 rounded-xl shadow-xl border ${
+            darkMode
+              ? "bg-gray-900 text-gray-300 border-gray-700"
+              : "bg-white text-gray-800 border-gray-200"
+          }`}
+        >
+          {founder.role.includes("Founder & CEO") ? (
+            <Link
+              href="https://www.xyronixlabs.com"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              The visionaries who established Xyronix Labs and continue to lead
-              our innovation.
-            </p>
-            <div
-              className={`h-1 w-20 ${darkMode ? "bg-purple-500" : "bg-purple-600"
-                } mx-auto mt-6`}
-            ></div>
-          </motion.div>
-
-          <div className="space-y-20">
-            {founders.map((founder, index) => (
-              <motion.div
-                key={founder.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className={`grid md:grid-cols-2 gap-2 items-center ${index % 2 === 1 ? "md:flex-row-reverse" : ""
-                  }`}
+              <motion.h2
+                className="text-2xl font-bold hover:text-purple-400 transition-colors inline-flex items-center"
+                whileHover={{ x: 5 }}
               >
-                <div className={`${index % 2 === 1 ? "md:order-2" : ""}`}>
-                  <Tilt options={{ max: 15, scale: 1.03, speed: 400 }}>
-                    <div
-                      className={`overflow-hidden rounded-xl ${darkMode ? "bg-gray-800" : "bg-gray-200"
-                        } aspect-square shadow-xl w-56 md:w-96 mx-auto`}
-                    >
-                      {founder.role.includes("Founder & CEO") ? (
-                        <Link
-                          href="https://www.xyronixlabs.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <div className="relative group">
-                            <Image
-                              src={
-                                founder.image ||
-                                "/placeholder.svg?height=300&width=300"
-                              }
-                              alt={founder.name}
-                              width={400}
-                              height={400}
-                              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                              <div className="bg-white/90 dark:bg-gray-900/90 px-4 py-2 rounded-lg">
-                                <p className="text-sm font-medium">
-                                  Visit Profile
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </Link>
-                      ) : (
-                        <Image
-                          src={
-                            founder.image ||
-                            "/placeholder.svg?height=300&width=300"
-                          }
-                          alt={founder.name}
-                          width={400}
-                          height={400}
-                          className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                        />
-                      )}
-                    </div>
-                  </Tilt>
-                </div>
-                <div className={`${index % 2 === 1 ? "md:order-1" : ""}`}>
-                  {founder.role.includes("Founder & CEO") ? (
-                    <Link
-                      href="https://www.xyronixlabs.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <motion.h2
-                        className={`text-3xl font-bold hover:text-purple-400 transition-colors inline-flex items-center`}
-                        whileHover={{ x: 5 }}
-                      >
-                        {founder.name}
-                        <ArrowRight className="ml-2 h-5 w-5" />
-                      </motion.h2>
-                    </Link>
-                  ) : (
-                    <h2 className="text-3xl font-bold">{founder.name}</h2>
-                  )}
-                  <p
-                    className={`mt-2 text-xl font-medium ${darkMode ? "text-purple-400" : "text-purple-600"
-                      }`}
-                  >
-                    {founder.role}
-                  </p>
-                  <div
-                    className={`mt-6 space-y-4 ${darkMode ? "text-gray-300" : "text-gray-700"
-                      }`}
-                  >
-                    {founder.bio.map((paragraph, i) => (
-                      <motion.p
-                        key={i}
-                        className="text-lg"
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-                        viewport={{ once: true }}
-                      >
-                        {paragraph}
-                      </motion.p>
-                    ))}
-                  </div>
-                  <div className="mt-8 flex space-x-4">
-                    {founder.social.linkedin && (
-                      <motion.a
-                        whileHover={{ y: -5 }}
-                        href={founder.social.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`rounded-full ${darkMode
-                            ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
-                            : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
-                          } p-3 transition-colors`}
-                        aria-label={`${founder.name}'s LinkedIn profile`}
-                      >
-                        <LinkedInIcon className="h-5 w-5" />
-                      </motion.a>
-                    )}
-                    {founder.social.twitter && (
-                      <motion.a
-                        whileHover={{ y: -5 }}
-                        href={founder.social.twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`rounded-full ${darkMode
-                            ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
-                            : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
-                          } p-3 transition-colors`}
-                        aria-label={`${founder.name}'s Twitter profile`}
-                      >
-                        <TwitterIcon className="h-5 w-5" />
-                      </motion.a>
-                    )}
-                    {founder.social.github && (
-                      <motion.a
-                        whileHover={{ y: -5 }}
-                        href={founder.social.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`rounded-full ${darkMode
-                            ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
-                            : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
-                          } p-3 transition-colors`}
-                        aria-label={`${founder.name}'s GitHub profile`}
-                      >
-                        <GitHubIcon className="h-5 w-5" />
-                      </motion.a>
-                    )}
-                    {founder.social.mail && (
-                      <motion.a
-                        whileHover={{ y: -5 }}
-                        href={founder.social.mail}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`rounded-full ${darkMode
-                            ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
-                            : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
-                          } p-3 transition-colors`}
-                        aria-label={`${founder.name}'s email`}
-                      >
-                        <EmailIcon className="h-5 w-5" />
-                      </motion.a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
+                {founder.name}
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </motion.h2>
+            </Link>
+          ) : (
+            <h2 className="text-2xl font-bold">{founder.name}</h2>
+          )}
+
+          <p
+            className={`mt-1 text-md font-medium ${
+              darkMode ? "text-purple-400" : "text-purple-600"
+            }`}
+          >
+            {founder.role}
+          </p>
+
+          <div className="mt-4 space-y-2 text-sm text-justify">
+            {founder.bio.map((paragraph, i) => (
+              <motion.p
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+                viewport={{ once: true }}
+              >
+                {paragraph}
+              </motion.p>
             ))}
           </div>
-        </div>
-      </section>
+
+          <div className="mt-6 flex space-x-3">
+            {founder.social.linkedin && (
+              <motion.a
+                whileHover={{ y: -5 }}
+                href={founder.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`rounded-full p-3 transition-colors ${
+                  darkMode
+                    ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
+                    : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
+                }`}
+              >
+                <LinkedInIcon className="h-5 w-5" />
+              </motion.a>
+            )}
+            {founder.social.github && (
+              <motion.a
+                whileHover={{ y: -5 }}
+                href={founder.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`rounded-full p-3 transition-colors ${
+                  darkMode
+                    ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
+                    : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
+                }`}
+              >
+                <GitHubIcon className="h-5 w-5" />
+              </motion.a>
+            )}
+            {founder.social.mail && (
+              <motion.a
+                whileHover={{ y: -5 }}
+                href={founder.social.mail}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`rounded-full p-3 transition-colors ${
+                  darkMode
+                    ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
+                    : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
+                }`}
+              >
+                <EmailIcon className="h-5 w-5" />
+              </motion.a>
+            )}
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
+
+{/* Commented out the previous founders section with images */}
+{/*
+<section
+  id="founders"
+  ref={sectionRefs.founders}
+  className={`py-20 ${darkMode ? "bg-gray-950" : "bg-gray-50"
+    } transition-colors duration-300 relative overflow-hidden p-16 mb-6`}
+>
+  <div className="absolute inset-0 opacity-10">
+    <WaveAnimation darkMode={darkMode} />
+  </div>
+
+  <div className="absolute inset-0 z-0 bg-white/20 dark:bg-gray-900/30 backdrop-blur-lg rounded-3xl border border-white/30 dark:border-gray-700/40 mx-4 md:mx-12" />
+
+  <div className="container mx-auto px-12 relative z-10 text-justify">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        Our Founders
+      </h2>
+      <p
+        className={`text-xl ${darkMode ? "text-gray-300" : "text-gray-700"
+          } max-w-3xl mx-auto`}
+      >
+        The visionaries who established Xyronix Labs and continue to lead
+        our innovation.
+      </p>
+      <div
+        className={`h-1 w-20 ${darkMode ? "bg-purple-500" : "bg-purple-600"
+          } mx-auto mt-6`}
+      ></div>
+    </motion.div>
+
+    <div className="space-y-20">
+      {founders.map((founder, index) => (
+        <motion.div
+          key={founder.id}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: index * 0.2 }}
+          viewport={{ once: true }}
+          className={`grid md:grid-cols-2 gap-2 items-center ${index % 2 === 1 ? "md:flex-row-reverse" : ""
+            }`}
+        >
+          <div className={`${index % 2 === 1 ? "md:order-2" : ""}`}>
+            <Tilt options={{ max: 15, scale: 1.03, speed: 400 }}>
+              <div
+                className={`overflow-hidden rounded-xl ${darkMode ? "bg-gray-800" : "bg-gray-200"
+                  } aspect-square shadow-xl w-56 md:w-96 mx-auto`}
+              >
+                {founder.role.includes("Founder & CEO") ? (
+                  <Link
+                    href="https://www.xyronixlabs.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="relative group">
+                      <Image
+                        src={
+                          founder.image ||
+                          "/placeholder.svg?height=300&width=300"
+                        }
+                        alt={founder.name}
+                        width={400}
+                        height={400}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="bg-white/90 dark:bg-gray-900/90 px-4 py-2 rounded-lg">
+                          <p className="text-sm font-medium">
+                            Visit Profile
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ) : (
+                  <Image
+                    src={
+                      founder.image ||
+                      "/placeholder.svg?height=300&width=300"
+                    }
+                    alt={founder.name}
+                    width={400}
+                    height={400}
+                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                )}
+              </div>
+            </Tilt>
+          </div>
+          <div className={`${index % 2 === 1 ? "md:order-1" : ""}`}>
+            {founder.role.includes("Founder & CEO") ? (
+              <Link
+                href="https://www.xyronixlabs.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <motion.h2
+                  className={`text-3xl font-bold hover:text-purple-400 transition-colors inline-flex items-center`}
+                  whileHover={{ x: 5 }}
+                >
+                  {founder.name}
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </motion.h2>
+              </Link>
+            ) : (
+              <h2 className="text-3xl font-bold">{founder.name}</h2>
+            )}
+            <p
+              className={`mt-2 text-xl font-medium ${darkMode ? "text-purple-400" : "text-purple-600"
+                }`}
+            >
+              {founder.role}
+            </p>
+            <div
+              className={`mt-6 space-y-4 ${darkMode ? "text-gray-300" : "text-gray-700"
+                }`}
+            >
+              {founder.bio.map((paragraph, i) => (
+                <motion.p
+                  key={i}
+                  className="text-lg"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  {paragraph}
+                </motion.p>
+              ))}
+            </div>
+            <div className="mt-8 flex space-x-4">
+              {founder.social.linkedin && (
+                <motion.a
+                  whileHover={{ y: -5 }}
+                  href={founder.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`rounded-full ${darkMode
+                      ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
+                      : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
+                    } p-3 transition-colors`}
+                  aria-label={`${founder.name}'s LinkedIn profile`}
+                >
+                  <LinkedInIcon className="h-5 w-5" />
+                </motion.a>
+              )}
+              {founder.social.twitter && (
+                <motion.a
+                  whileHover={{ y: -5 }}
+                  href={founder.social.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`rounded-full ${darkMode
+                      ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
+                      : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
+                    } p-3 transition-colors`}
+                  aria-label={`${founder.name}'s Twitter profile`}
+                >
+                  <TwitterIcon className="h-5 w-5" />
+                </motion.a>
+              )}
+              {founder.social.github && (
+                <motion.a
+                  whileHover={{ y: -5 }}
+                  href={founder.social.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`rounded-full ${darkMode
+                      ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
+                      : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
+                    } p-3 transition-colors`}
+                  aria-label={`${founder.name}'s GitHub profile`}
+                >
+                  <GitHubIcon className="h-5 w-5" />
+                </motion.a>
+              )}
+              {founder.social.mail && (
+                <motion.a
+                  whileHover={{ y: -5 }}
+                  href={founder.social.mail}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`rounded-full ${darkMode
+                      ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
+                      : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
+                    } p-3 transition-colors`}
+                  aria-label={`${founder.name}'s email`}
+                >
+                  <EmailIcon className="h-5 w-5" />
+                </motion.a>
+              )}
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+*/}
 
       {/* Team Section */}
       <section
@@ -2431,3 +2582,4 @@ import {
   MessageSquare,
   Activity,
 } from "lucide-react";
+
