@@ -242,8 +242,8 @@ export default function AboutUsPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               onClick={toggleTheme}
               className={`p-2 rounded-full ${darkMode
-                  ? "bg-gray-800 text-yellow-400"
-                  : "bg-gray-200 text-gray-700"
+                ? "bg-gray-800 text-yellow-400"
+                : "bg-gray-200 text-gray-700"
                 } hover:bg-opacity-80 transition-colors`}
               aria-label={
                 darkMode ? "Switch to light mode" : "Switch to dark mode"
@@ -267,8 +267,8 @@ export default function AboutUsPage() {
       >
         <div
           className={`absolute inset-0 ${darkMode
-              ? "bg-gradient-to-b from-purple-900/20 to-gray-950"
-              : "bg-gradient-to-b from-purple-100 to-white"
+            ? "bg-gradient-to-b from-purple-900/20 to-gray-950"
+            : "bg-gradient-to-b from-purple-100 to-white"
             } z-0`}
         />
 
@@ -346,8 +346,8 @@ export default function AboutUsPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`px-6 py-3 ${darkMode
-                    ? "bg-purple-600 hover:bg-purple-700"
-                    : "bg-purple-500 hover:bg-purple-600"
+                  ? "bg-purple-600 hover:bg-purple-700"
+                  : "bg-purple-500 hover:bg-purple-600"
                   } rounded-full font-medium transition-colors text-white flex items-center space-x-2 group`}
                 onClick={() => scrollToSection("mission")}
               >
@@ -363,8 +363,8 @@ export default function AboutUsPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`px-6 py-3 ${darkMode
-                    ? "bg-gray-800 hover:bg-gray-700"
-                    : "bg-gray-200 hover:bg-gray-300"
+                  ? "bg-gray-800 hover:bg-gray-700"
+                  : "bg-gray-200 hover:bg-gray-300"
                   } rounded-full font-medium transition-colors flex items-center space-x-2`}
                 onClick={() => scrollToSection("founders")}
               >
@@ -375,8 +375,8 @@ export default function AboutUsPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`px-6 py-3 ${darkMode
-                    ? "bg-gray-800 hover:bg-gray-700"
-                    : "bg-gray-200 hover:bg-gray-300"
+                  ? "bg-gray-800 hover:bg-gray-700"
+                  : "bg-gray-200 hover:bg-gray-300"
                   } rounded-full font-medium transition-colors flex items-center space-x-2`}
                 onClick={() => scrollToSection("team")}
               >
@@ -407,8 +407,8 @@ export default function AboutUsPage() {
                   key={index}
                   options={{ max: 15, scale: 1.05, speed: 300 }}
                   className={`p-6 rounded-xl ${darkMode
-                      ? "bg-gray-800/80 backdrop-blur-sm"
-                      : "bg-gray-100/80 backdrop-blur-sm"
+                    ? "bg-gray-800/80 backdrop-blur-sm"
+                    : "bg-gray-100/80 backdrop-blur-sm"
                     } transition-all duration-300 border ${darkMode ? "border-purple-900/30" : "border-purple-200/30"
                     }`}
                 >
@@ -489,8 +489,8 @@ export default function AboutUsPage() {
                   viewport={{ once: true }}
                   whileHover={{ y: -5 }}
                   className={`${darkMode
-                      ? "bg-gray-800/80 hover:bg-gray-800/60"
-                      : "bg-white/80 hover:bg-gray-100/80"
+                    ? "bg-gray-800/80 hover:bg-gray-800/60"
+                    : "bg-white/80 hover:bg-gray-100/80"
                     } rounded-xl p-6 transition-all duration-300 shadow-lg backdrop-blur-sm border ${darkMode ? "border-purple-900/20" : "border-purple-200/20"
                     }`}
                 >
@@ -842,8 +842,8 @@ export default function AboutUsPage() {
                           <span
                             key={i}
                             className={`text-xs px-2 py-1 rounded-full ${darkMode
-                                ? "bg-gray-700 text-gray-300"
-                                : "bg-gray-200 text-gray-700"
+                              ? "bg-gray-700 text-gray-300"
+                              : "bg-gray-200 text-gray-700"
                               }`}
                           >
                             {tech}
@@ -863,17 +863,17 @@ export default function AboutUsPage() {
       <section
         id="founders"
         ref={sectionRefs.founders}
-        className={`py-20 ${darkMode ? "bg-gray-950" : "bg-gray-50"
-          } transition-colors duration-300 relative overflow-hidden p-16 mb-6`}
+        className={`w-full py-20 ${darkMode ? "bg-gray-950" : "bg-gray-50"
+          } transition-colors duration-300 relative overflow-hidden mb-6`}
       >
         <div className="absolute inset-0 opacity-10">
           <WaveAnimation darkMode={darkMode} />
         </div>
 
         {/* Glass background overlay */}
-        <div className="absolute inset-0 z-0 bg-white/20 dark:bg-gray-900/30 backdrop-blur-lg rounded-3xl border border-white/30 dark:border-gray-700/40 mx-4 md:mx-12" />
+        <div className="absolute inset-0 z-0 bg-white/20 dark:bg-gray-900/30 backdrop-blur-lg border border-white/30 dark:border-gray-700/40 mx-4 md:mx-12 rounded-3xl" />
 
-        <div className="container mx-auto px-12 relative z-10 text-justify">
+        <div className="relative z-10 px-6 md:px-12 max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -881,9 +881,7 @@ export default function AboutUsPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our Founders
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Founders</h2>
             <p
               className={`text-xl ${darkMode ? "text-gray-300" : "text-gray-700"
                 } max-w-3xl mx-auto`}
@@ -897,7 +895,7 @@ export default function AboutUsPage() {
             ></div>
           </motion.div>
 
-          <div className="space-y-20">
+          <div className="space-y-10">
             {founders.map((founder, index) => (
               <motion.div
                 key={founder.id}
@@ -905,165 +903,311 @@ export default function AboutUsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className={`grid md:grid-cols-2 gap-2 items-center ${index % 2 === 1 ? "md:flex-row-reverse" : ""
+                className={`w-full p-6 rounded-xl shadow-xl border ${darkMode
+                    ? "bg-gray-900 text-gray-300 border-gray-700"
+                    : "bg-white text-gray-800 border-gray-200"
                   }`}
               >
-                <div className={`${index % 2 === 1 ? "md:order-2" : ""}`}>
-                  <Tilt options={{ max: 15, scale: 1.03, speed: 400 }}>
-                    <div
-                      className={`overflow-hidden rounded-xl ${darkMode ? "bg-gray-800" : "bg-gray-200"
-                        } aspect-square shadow-xl w-56 md:w-96 mx-auto`}
+                {founder.role.includes("Founder & CEO") ? (
+                  <Link
+                    href="https://www.xyronixlabs.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <motion.h2
+                      className="text-5xl md:text-7xl lg:text-9xl font-extrabold hover:text-purple-400 transition-colors inline-flex items-center"
+                      whileHover={{ x: 5 }}
                     >
-                      {founder.role.includes("Founder & CEO") ? (
-                        <Link
-                          href="https://www.xyronixlabs.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <div className="relative group">
-                            <Image
-                              src={
-                                founder.image ||
-                                "/placeholder.svg?height=300&width=300"
-                              }
-                              alt={founder.name}
-                              width={400}
-                              height={400}
-                              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                              <div className="bg-white/90 dark:bg-gray-900/90 px-4 py-2 rounded-lg">
-                                <p className="text-sm font-medium">
-                                  Visit Profile
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </Link>
-                      ) : (
-                        <Image
-                          src={
-                            founder.image ||
-                            "/placeholder.svg?height=300&width=300"
-                          }
-                          alt={founder.name}
-                          width={400}
-                          height={400}
-                          className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                        />
-                      )}
-                    </div>
-                  </Tilt>
+                      {founder.name}
+                      <ArrowRight className="ml-2 h-6 w-6" />
+                    </motion.h2>
+                  </Link>
+                ) : (
+                  <h2 className="text-5xl md:text-7xl lg:text-8xl font-extrabold">
+                    {founder.name}
+                  </h2>
+                )}
+
+                <p
+                  className={`mt-2 text-[40px] font-semibold ${darkMode ? "text-purple-400" : "text-purple-600"
+                    }`}
+                >
+                  {founder.role}
+                </p>
+
+
+                <div className="mt-5 space-y-3 text-base md:text-lg text-justify leading-relaxed">
+                  {founder.bio.map((paragraph, i) => (
+                    <motion.p
+                      key={i}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      {paragraph}
+                    </motion.p>
+                  ))}
                 </div>
-                <div className={`${index % 2 === 1 ? "md:order-1" : ""}`}>
-                  {founder.role.includes("Founder & CEO") ? (
-                    <Link
-                      href="https://www.xyronixlabs.com"
+
+                <div className="mt-6 flex space-x-3">
+                  {founder.social.linkedin && (
+                    <motion.a
+                      whileHover={{ y: -5 }}
+                      href={founder.social.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className={`rounded-full p-3 transition-colors ${darkMode
+                          ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
+                          : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
+                        }`}
                     >
-                      <motion.h2
-                        className={`text-3xl font-bold hover:text-purple-400 transition-colors inline-flex items-center`}
-                        whileHover={{ x: 5 }}
-                      >
-                        {founder.name}
-                        <ArrowRight className="ml-2 h-5 w-5" />
-                      </motion.h2>
-                    </Link>
-                  ) : (
-                    <h2 className="text-3xl font-bold">{founder.name}</h2>
+                      <LinkedInIcon className="h-5 w-5" />
+                    </motion.a>
                   )}
-                  <p
-                    className={`mt-2 text-xl font-medium ${darkMode ? "text-purple-400" : "text-purple-600"
-                      }`}
-                  >
-                    {founder.role}
-                  </p>
-                  <div
-                    className={`mt-6 space-y-4 ${darkMode ? "text-gray-300" : "text-gray-700"
-                      }`}
-                  >
-                    {founder.bio.map((paragraph, i) => (
-                      <motion.p
-                        key={i}
-                        className="text-lg"
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-                        viewport={{ once: true }}
-                      >
-                        {paragraph}
-                      </motion.p>
-                    ))}
-                  </div>
-                  <div className="mt-8 flex space-x-4">
-                    {founder.social.linkedin && (
-                      <motion.a
-                        whileHover={{ y: -5 }}
-                        href={founder.social.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`rounded-full ${darkMode
-                            ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
-                            : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
-                          } p-3 transition-colors`}
-                        aria-label={`${founder.name}'s LinkedIn profile`}
-                      >
-                        <LinkedInIcon className="h-5 w-5" />
-                      </motion.a>
-                    )}
-                    {founder.social.twitter && (
-                      <motion.a
-                        whileHover={{ y: -5 }}
-                        href={founder.social.twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`rounded-full ${darkMode
-                            ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
-                            : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
-                          } p-3 transition-colors`}
-                        aria-label={`${founder.name}'s Twitter profile`}
-                      >
-                        <TwitterIcon className="h-5 w-5" />
-                      </motion.a>
-                    )}
-                    {founder.social.github && (
-                      <motion.a
-                        whileHover={{ y: -5 }}
-                        href={founder.social.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`rounded-full ${darkMode
-                            ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
-                            : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
-                          } p-3 transition-colors`}
-                        aria-label={`${founder.name}'s GitHub profile`}
-                      >
-                        <GitHubIcon className="h-5 w-5" />
-                      </motion.a>
-                    )}
-                    {founder.social.mail && (
-                      <motion.a
-                        whileHover={{ y: -5 }}
-                        href={founder.social.mail}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`rounded-full ${darkMode
-                            ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
-                            : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
-                          } p-3 transition-colors`}
-                        aria-label={`${founder.name}'s email`}
-                      >
-                        <EmailIcon className="h-5 w-5" />
-                      </motion.a>
-                    )}
-                  </div>
+                  {founder.social.github && (
+                    <motion.a
+                      whileHover={{ y: -5 }}
+                      href={founder.social.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`rounded-full p-3 transition-colors ${darkMode
+                          ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
+                          : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
+                        }`}
+                    >
+                      <GitHubIcon className="h-5 w-5" />
+                    </motion.a>
+                  )}
+                  {founder.social.mail && (
+                    <motion.a
+                      whileHover={{ y: -5 }}
+                      href={founder.social.mail}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`rounded-full p-3 transition-colors ${darkMode
+                          ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
+                          : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
+                        }`}
+                    >
+                      <EmailIcon className="h-5 w-5" />
+                    </motion.a>
+                  )}
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+
+
+
+      {/* Commented out the previous founders section with images */}
+      {/*
+<section
+  id="founders"
+  ref={sectionRefs.founders}
+  className={`py-20 ${darkMode ? "bg-gray-950" : "bg-gray-50"
+    } transition-colors duration-300 relative overflow-hidden p-16 mb-6`}
+>
+  <div className="absolute inset-0 opacity-10">
+    <WaveAnimation darkMode={darkMode} />
+  </div>
+
+  <div className="absolute inset-0 z-0 bg-white/20 dark:bg-gray-900/30 backdrop-blur-lg rounded-3xl border border-white/30 dark:border-gray-700/40 mx-4 md:mx-12" />
+
+  <div className="container mx-auto px-12 relative z-10 text-justify">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        Our Founders
+      </h2>
+      <p
+        className={`text-xl ${darkMode ? "text-gray-300" : "text-gray-700"
+          } max-w-3xl mx-auto`}
+      >
+        The visionaries who established Xyronix Labs and continue to lead
+        our innovation.
+      </p>
+      <div
+        className={`h-1 w-20 ${darkMode ? "bg-purple-500" : "bg-purple-600"
+          } mx-auto mt-6`}
+      ></div>
+    </motion.div>
+
+    <div className="space-y-20">
+      {founders.map((founder, index) => (
+        <motion.div
+          key={founder.id}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: index * 0.2 }}
+          viewport={{ once: true }}
+          className={`grid md:grid-cols-2 gap-2 items-center ${index % 2 === 1 ? "md:flex-row-reverse" : ""
+            }`}
+        >
+          <div className={`${index % 2 === 1 ? "md:order-2" : ""}`}>
+            <Tilt options={{ max: 15, scale: 1.03, speed: 400 }}>
+              <div
+                className={`overflow-hidden rounded-xl ${darkMode ? "bg-gray-800" : "bg-gray-200"
+                  } aspect-square shadow-xl w-56 md:w-96 mx-auto`}
+              >
+                {founder.role.includes("Founder & CEO") ? (
+                  <Link
+                    href="https://www.xyronixlabs.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="relative group">
+                      <Image
+                        src={
+                          founder.image ||
+                          "/placeholder.svg?height=300&width=300"
+                        }
+                        alt={founder.name}
+                        width={400}
+                        height={400}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="bg-white/90 dark:bg-gray-900/90 px-4 py-2 rounded-lg">
+                          <p className="text-sm font-medium">
+                            Visit Profile
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ) : (
+                  <Image
+                    src={
+                      founder.image ||
+                      "/placeholder.svg?height=300&width=300"
+                    }
+                    alt={founder.name}
+                    width={400}
+                    height={400}
+                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                )}
+              </div>
+            </Tilt>
+          </div>
+          <div className={`${index % 2 === 1 ? "md:order-1" : ""}`}>
+            {founder.role.includes("Founder & CEO") ? (
+              <Link
+                href="https://www.xyronixlabs.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <motion.h2
+                  className={`text-3xl font-bold hover:text-purple-400 transition-colors inline-flex items-center`}
+                  whileHover={{ x: 5 }}
+                >
+                  {founder.name}
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </motion.h2>
+              </Link>
+            ) : (
+              <h2 className="text-3xl font-bold">{founder.name}</h2>
+            )}
+            <p
+              className={`mt-2 text-xl font-medium ${darkMode ? "text-purple-400" : "text-purple-600"
+                }`}
+            >
+              {founder.role}
+            </p>
+            <div
+              className={`mt-6 space-y-4 ${darkMode ? "text-gray-300" : "text-gray-700"
+                }`}
+            >
+              {founder.bio.map((paragraph, i) => (
+                <motion.p
+                  key={i}
+                  className="text-lg"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  {paragraph}
+                </motion.p>
+              ))}
+            </div>
+            <div className="mt-8 flex space-x-4">
+              {founder.social.linkedin && (
+                <motion.a
+                  whileHover={{ y: -5 }}
+                  href={founder.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`rounded-full ${darkMode
+                      ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
+                      : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
+                    } p-3 transition-colors`}
+                  aria-label={`${founder.name}'s LinkedIn profile`}
+                >
+                  <LinkedInIcon className="h-5 w-5" />
+                </motion.a>
+              )}
+              {founder.social.twitter && (
+                <motion.a
+                  whileHover={{ y: -5 }}
+                  href={founder.social.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`rounded-full ${darkMode
+                      ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
+                      : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
+                    } p-3 transition-colors`}
+                  aria-label={`${founder.name}'s Twitter profile`}
+                >
+                  <TwitterIcon className="h-5 w-5" />
+                </motion.a>
+              )}
+              {founder.social.github && (
+                <motion.a
+                  whileHover={{ y: -5 }}
+                  href={founder.social.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`rounded-full ${darkMode
+                      ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
+                      : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
+                    } p-3 transition-colors`}
+                  aria-label={`${founder.name}'s GitHub profile`}
+                >
+                  <GitHubIcon className="h-5 w-5" />
+                </motion.a>
+              )}
+              {founder.social.mail && (
+                <motion.a
+                  whileHover={{ y: -5 }}
+                  href={founder.social.mail}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`rounded-full ${darkMode
+                      ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
+                      : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
+                    } p-3 transition-colors`}
+                  aria-label={`${founder.name}'s email`}
+                >
+                  <EmailIcon className="h-5 w-5" />
+                </motion.a>
+              )}
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+*/}
 
       {/* Team Section */}
       <section
@@ -1074,35 +1218,33 @@ export default function AboutUsPage() {
       >
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
-  className="text-center mb-16"
->
-<h2
-  className={`text-3xl md:text-4xl font-bold mb-4 transition duration-300 rounded px-2 inline-block ${
-    darkMode
-      ? "hover:bg-purple-800/20"
-      : "hover:bg-purple-600"
-  }`}
->
-  Meet Our Team
-</h2>
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2
+              className={`text-3xl md:text-4xl font-bold mb-4 transition duration-300 rounded px-2 inline-block ${darkMode
+                  ? "hover:bg-purple-800/20"
+                  : "hover:bg-purple-600"
+                }`}
+            >
+              Meet Our Team
+            </h2>
 
 
-  <p
-    className={`text-xl ${darkMode ? "text-gray-300" : "text-gray-700"} max-w-3xl mx-auto`}
-  >
-    The brilliant minds behind Xyronix Labs who are dedicated to innovation and excellence.
-  </p>
+            <p
+              className={`text-xl ${darkMode ? "text-gray-300" : "text-gray-700"} max-w-3xl mx-auto`}
+            >
+              The brilliant minds behind Xyronix Labs who are dedicated to innovation and excellence.
+            </p>
 
-  <div
-    className={`h-1 w-20 hover:w-full transition-all duration-300 ${
-      darkMode ? "bg-purple-500" : "bg-purple-600"
-    } mx-auto mt-6`}
-  ></div>
-</motion.div>
+            <div
+              className={`h-1 w-20 hover:w-full transition-all duration-300 ${darkMode ? "bg-purple-500" : "bg-purple-600"
+                } mx-auto mt-6`}
+            ></div>
+          </motion.div>
 
 
           <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6">
@@ -1160,8 +1302,8 @@ export default function AboutUsPage() {
                 viewport={{ once: true }}
                 whileHover={{ y: -8, scale: 1.03 }}
                 className={`${darkMode
-                    ? "bg-gray-800/80 hover:bg-gray-800/60"
-                    : "bg-white/80 hover:bg-gray-100/80"
+                  ? "bg-gray-800/80 hover:bg-gray-800/60"
+                  : "bg-white/80 hover:bg-gray-100/80"
                   } p-6 rounded-xl transition-all shadow-lg border ${darkMode ? "border-gray-700/50" : "border-gray-200/50"
                   } backdrop-blur-sm`}
               >
@@ -1240,8 +1382,8 @@ export default function AboutUsPage() {
 
                 <div
                   className={`md:w-1/2 ${index % 2 === 0
-                      ? "md:pr-12 md:text-right"
-                      : "md:pl-12 md:ml-auto"
+                    ? "md:pr-12 md:text-right"
+                    : "md:pl-12 md:ml-auto"
                     } pl-16 md:pl-0`}
                 >
                   <div
@@ -1293,102 +1435,102 @@ export default function AboutUsPage() {
               >
                 <X className="h-5 w-5" />
               </button>
-                <div className="p-6 md:p-8 flex flex-col">
-                  <h3 className="text-2xl font-bold">{selectedMember.name}</h3>
-                  <p
-                    className={`${darkMode ? "text-purple-400" : "text-purple-600"
-                      } text-lg mb-4`}
-                  >
-                    {selectedMember.role}
-                  </p>
+              <div className="p-6 md:p-8 flex flex-col">
+                <h3 className="text-2xl font-bold">{selectedMember.name}</h3>
+                <p
+                  className={`${darkMode ? "text-purple-400" : "text-purple-600"
+                    } text-lg mb-4`}
+                >
+                  {selectedMember.role}
+                </p>
 
+                <div
+                  className={`flex-grow overflow-y-auto ${darkMode ? "text-gray-300" : "text-gray-700"
+                    } space-y-4 pr-2`}
+                >
                   <div
-                    className={`flex-grow overflow-y-auto ${darkMode ? "text-gray-300" : "text-gray-700"
-                      } space-y-4 pr-2`}
+                    className={`mt-6 p-4 rounded-lg ${darkMode ? "bg-gray-800" : "bg-gray-100"
+                      }`}
                   >
-                    <div
-                      className={`mt-6 p-4 rounded-lg ${darkMode ? "bg-gray-800" : "bg-gray-100"
-                        }`}
-                    >
-                      <h4 className="font-semibold mb-2">Expertise</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedMember.expertise?.map((skill, i) => (
+                    <h4 className="font-semibold mb-2">Expertise</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedMember.expertise?.map((skill, i) => (
+                        <span
+                          key={i}
+                          className={`px-3 py-1 rounded-full text-sm ${darkMode
+                            ? "bg-gray-700 text-gray-300"
+                            : "bg-gray-200 text-gray-800"
+                            }`}
+                        >
+                          {skill}
+                        </span>
+                      )) ||
+                        [
+                          "AI",
+                          "IoT",
+                          "Robotics",
+                          "Data Science",
+                          "Cloud Computing",
+                        ].map((skill, i) => (
                           <span
                             key={i}
                             className={`px-3 py-1 rounded-full text-sm ${darkMode
-                                ? "bg-gray-700 text-gray-300"
-                                : "bg-gray-200 text-gray-800"
+                              ? "bg-gray-700 text-gray-300"
+                              : "bg-gray-200 text-gray-800"
                               }`}
                           >
                             {skill}
                           </span>
-                        )) ||
-                          [
-                            "AI",
-                            "IoT",
-                            "Robotics",
-                            "Data Science",
-                            "Cloud Computing",
-                          ].map((skill, i) => (
-                            <span
-                              key={i}
-                              className={`px-3 py-1 rounded-full text-sm ${darkMode
-                                  ? "bg-gray-700 text-gray-300"
-                                  : "bg-gray-200 text-gray-800"
-                                }`}
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                      </div>
+                        ))}
                     </div>
                   </div>
-
-                  <div className="mt-6 flex space-x-3">
-                    {selectedMember.social.linkedin && (
-                      <a
-                        href={selectedMember.social.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`rounded-full ${darkMode
-                            ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
-                            : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
-                          } p-2 transition-colors`}
-                        aria-label={`${selectedMember.name}'s LinkedIn profile`}
-                      >
-                        <LinkedInIcon className="h-5 w-5" />
-                      </a>
-                    )}
-                    {selectedMember.social.github && (
-                      <a
-                        href={selectedMember.social.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`rounded-full ${darkMode
-                            ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
-                            : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
-                          } p-2 transition-colors`}
-                        aria-label={`${selectedMember.name}'s GitHub profile`}
-                      >
-                        <GitHubIcon className="h-5 w-5" />
-                      </a>
-                    )}
-                    {selectedMember.social.mail && (
-                      <a
-                        href={selectedMember.social.mail}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`rounded-full ${darkMode
-                            ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
-                            : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
-                          } p-2 transition-colors`}
-                        aria-label={`${selectedMember.name}'s email`}
-                      >
-                        <EmailIcon className="h-5 w-5" />
-                      </a>
-                    )}
-                  </div>
                 </div>
+
+                <div className="mt-6 flex space-x-3">
+                  {selectedMember.social.linkedin && (
+                    <a
+                      href={selectedMember.social.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`rounded-full ${darkMode
+                        ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
+                        : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
+                        } p-2 transition-colors`}
+                      aria-label={`${selectedMember.name}'s LinkedIn profile`}
+                    >
+                      <LinkedInIcon className="h-5 w-5" />
+                    </a>
+                  )}
+                  {selectedMember.social.github && (
+                    <a
+                      href={selectedMember.social.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`rounded-full ${darkMode
+                        ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
+                        : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
+                        } p-2 transition-colors`}
+                      aria-label={`${selectedMember.name}'s GitHub profile`}
+                    >
+                      <GitHubIcon className="h-5 w-5" />
+                    </a>
+                  )}
+                  {selectedMember.social.mail && (
+                    <a
+                      href={selectedMember.social.mail}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`rounded-full ${darkMode
+                        ? "bg-gray-800 text-gray-300 hover:bg-purple-600 hover:text-white"
+                        : "bg-gray-200 text-gray-700 hover:bg-purple-500 hover:text-white"
+                        } p-2 transition-colors`}
+                      aria-label={`${selectedMember.name}'s email`}
+                    >
+                      <EmailIcon className="h-5 w-5" />
+                    </a>
+                  )}
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         )}
